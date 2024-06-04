@@ -1,49 +1,38 @@
-const carousel = document.querySelector('.carousel');
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.querySelector('.prev-slide');
-const nextBtn = document.querySelector('.next-slide');
-const indicatorsContainer = document.querySelector('.indicators');
+let slideIndex = 1;
+showSlides(slideIndex);
 
-let slideIndex = 0;
-
-// Додавання індикаторів
-slides.forEach((_, index) => {
-    const indicator = document.createElement('span');
-    indicator.classList.add('indicator');
-    indicator.addEventListener('click', () => goToSlide(index));
-    indicatorsContainer.appendChild(indicator);
+document.getElementById('menu-icon').addEventListener('click', () => {
+  const navLinks = document.getElementById('nav-links');
+  navLinks.classList.toggle('active');
+  if (navLinks.classList.contains('active')) {
+    navLinks.style.animation = 'slideDown 0.5s forwards';
+  } else {
+    navLinks.style.animation = 'none';
+  }
 });
 
-const indicators = document.querySelectorAll('.indicator');
-
-function goToSlide(index) {
-    slideIndex = index;
-    updateCarousel();
+function plusSlides(n) {
+  showSlides(slideIndex += n);
 }
 
-function updateCarousel() {
-    carousel.style.transform = `translateX(${-slideIndex * 100}%)`;
-    indicators.forEach((indicator, index) => {
-        if (index === slideIndex) {
-            indicator.classList.add('active');
-        } else {
-            indicator.classList.remove('active');
-        }
-    });
+function currentSlide(n) {
+  showSlides(slideIndex = n);
 }
 
-prevBtn.addEventListener('click', () => {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    updateCarousel();
-});
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
 
-nextBtn.addEventListener('click', () => {
-    slideIndex = (slideIndex + 1) % slides.length;
-    updateCarousel();
-});
-
-// Автоматичне перемикання слайдів
-setInterval(() => {
-    slideIndex = (slideIndex + 1) % slides.length;
-    updateCarousel();
-}, 5000);
+setInterval(() => { plusSlides(1);}, 3000);
