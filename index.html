@@ -1,39 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Адаптивне навігаційне меню</title>
-    <link rel="stylesheet" href="styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Назва сайту</h1>
-        <nav class="menu">
-            <ul class="large-screen-menu">
-                <li><a href="#">Пункт 1</a></li>
-                <li><a href="#">Пункт 2</a></li>
-                <li><a href="#">Пункт 3</a></li>
-            </ul>
-            <button class="hamburger-menu">&#9776;</button>
-            <ul class="small-screen-menu">
-                <li><a href="#">Пункт 1</a></li>
-                <li><a href="#">Пункт 2</a></li>
-                <li><a href="#">Пункт 3</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="content">
-        <div class="carousel-container">
-    <div class="carousel">
-        <div class="slide"><img src="slide1.jpg" alt="Slide 1"></div>
-        <div class="slide"><img src="slide2.jpg" alt="Slide 2"></div>
-        <div class="slide"><img src="slide3.jpg" alt="Slide 3"></div>
-    </div>
-    <button class="prev-slide">&lt;</button>
-    <button class="next-slide">&gt;</button>
-    <div class="indicators"></div>
+
+<nav>
+  <div class="menu-icon" id="menu-icon">&#9776;</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="slideshow-container">
+
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="images/slide1.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="images/slide2.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="images/slide3.jpg" style="width:100%">
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
 </div>
-    </div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+
+<div class="large-images">
+  <img src="images/large-image1.jpg" alt="Large Image 1">
+  <img src="images/large-image2.jpg" alt="Large Image 2">
+  <img src="images/large-image3.jpg" alt="Large Image 3">
+</div>
+
+<div class="medium-images">
+  <img src="images/medium-image1.jpg" alt="Medium Image 1">
+  <img src="images/medium-image2.jpg" alt="Medium Image 2">
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
